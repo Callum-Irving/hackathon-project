@@ -1,10 +1,12 @@
+import hashlib
 import os
 import psycopg2
 import schedule
 import threading
+import base64
 import time
 from dotenv import load_dotenv
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS
 
 
@@ -43,19 +45,65 @@ def run_continuously(interval):
     return cease_continuous_run
 
 
-def wipe_databse():
-    # TODO: Implement database wiping
-    print("Interval")
+# Function to wipe the rows but preserve the table
+def wipe_database():
+    with conn.cursor() as cur:
+        cur.execute("DELETE FROM hacktheearth.logs")
+        conn.commit()
 
 
-schedule.every().tuesday.at("23:59").do(wipe_databse)
+# Schedule weekly task
+schedule.every().sunday.at("23:59").do(wipe_database)
 # Start the background thread
-stop_run_continuously = run_continuously(300)
+stop_run_continuously = run_continuously(1)
 
-################################ Flask Routes ##################################
+#################################### Flask #####################################
 
 app = Flask(__name__)
 CORS(app)
+
+################################ Authentication ################################
+
+
+@app.route("/auth/create_user", methods=["POST"])
+def create_user():
+    # Get request data
+    data = request.get_json()
+    address = data["address"]
+    password = data["password"]
+
+    with conn.cursor() as cur:
+        cur.execute(
+            "SELECT * FROM hacktheearth.users WHERE address = %s", (address,))
+        already_created = cur.fetchall()
+        if already_created:
+            return "Address already associated with account", 400
+
+    # Generate salt
+    salt = base64.b64encode(os.urandom(16)).decode("ascii")
+
+    # Salt and hash password
+    salted_password = password + salt
+    hashed_password = hashlib.sha256(
+        salted_password.encode("utf-8")).hexdigest()
+
+    # Add user to database
+    with conn.cursor() as cur:
+        cur.execute(
+            "CREATE TABLE IF NOT EXISTS hacktheearth.users (address STRING PRIMARY KEY, salt STRING, password STRING)"
+        )
+        cur.execute("UPSERT INTO hacktheearth.users (address, salt, password) VALUES (%s, %s, %s)",
+                    (address, salt, hashed_password,))
+        conn.commit()
+
+    return "Account successfully created"
+
+
+@app.route("/auth/authenticate_user")
+def authenticate_user():
+    pass
+
+########################### Data Querying and Updating #########################
 
 
 @app.route("/api/add_entry", methods=["POST"])
@@ -69,14 +117,17 @@ def add_entry():
         cur.execute(
             "CREATE TABLE IF NOT EXISTS hacktheearth.logs (id INT PRIMARY KEY)"
         )
-        cur.execute("UPSERT INTO hacktheearth.logs (id) VALUES (1)")
+        cur.execute("UPSERT INTO hacktheearth.logs (id) VALUES (2)")
         conn.commit()
     return "Add entry"
 
 
 @app.route("/api/get_general_data", methods=["GET"])
 def get_general_data():
-    return "Data"
+    with conn.cursor() as cur:
+        cur.execute("SELECT * FROM hacktheearth.logs ORDER BY id DESC")
+        posts = cur.fetchall()
+    return str(posts)
 
 
 if __name__ == "__main__":
