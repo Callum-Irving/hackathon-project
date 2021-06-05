@@ -72,7 +72,12 @@ def create_user():
     address = data["address"]
     password = data["password"]
 
+    # Check to see that address doesn't already have account
     with conn.cursor() as cur:
+        cur.execute(
+            "CREATE TABLE IF NOT EXISTS hacktheearth.users (address STRING PRIMARY KEY, salt STRING, password STRING)"
+        )
+        conn.commit()
         cur.execute(
             "SELECT * FROM hacktheearth.users WHERE address = %s", (address,))
         already_created = cur.fetchall()
@@ -89,9 +94,6 @@ def create_user():
 
     # Add user to database
     with conn.cursor() as cur:
-        cur.execute(
-            "CREATE TABLE IF NOT EXISTS hacktheearth.users (address STRING PRIMARY KEY, salt STRING, password STRING)"
-        )
         cur.execute("UPSERT INTO hacktheearth.users (address, salt, password) VALUES (%s, %s, %s)",
                     (address, salt, hashed_password,))
         conn.commit()
@@ -99,9 +101,46 @@ def create_user():
     return "Account successfully created"
 
 
-@app.route("/auth/authenticate_user")
+@app.route("/auth/login", methods=["POST"])
 def authenticate_user():
-    pass
+    # Get request data
+    data = request.get_json()
+    address = data["address"]
+    password = data["password"]
+
+    # Query database and decode response
+    with conn.cursor() as cur:
+        # Create the table so we don't get an error if it doesn't exist
+        cur.execute(
+            "CREATE TABLE IF NOT EXISTS hacktheearth.users (address STRING PRIMARY KEY, salt STRING, password STRING)"
+        )
+        conn.commit()
+
+        # Fin the user with the given address
+        cur.execute(
+            "SELECT (salt, password) FROM hacktheearth.users WHERE address = %s", (address,))
+
+        # Decode response
+        user_row = cur.fetchall()[0][0][1:-1]
+        user_row = tuple(map(str, user_row.split(',')))
+        salt = user_row[0]
+        old_hash = user_row[1]
+
+        # If we don't get a response, it means that there is no user with that
+        # address yet.
+        if not user_row:
+            return "This address does not have an account associated with it yet", 400
+
+    # Hash the password that the person trying to login provided
+    salted_password = password + salt
+    new_hash = hashlib.sha256(salted_password.encode("utf-8")).hexdigest()
+
+    # Compare the hashes to see if they gave the correct password or not
+    if new_hash == old_hash:
+        return "Login successfull"
+    else:
+        return "Incorrect password", 400
+
 
 ########################### Data Querying and Updating #########################
 
