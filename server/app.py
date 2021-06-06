@@ -25,7 +25,7 @@ load_dotenv()
 
 # Establish connection to CockroachDB database
 conn = psycopg2.connect(
-    dbname=os.environ['DB_DATABASE'],
+    database=os.environ['DB_DATABASE'],
     user=os.environ['DB_USER'],
     password=os.environ['DB_PASSWD'],
     sslmode='require',
