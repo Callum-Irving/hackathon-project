@@ -8,6 +8,14 @@
 	padding: 0;
 }
 
+.myWaste {
+    padding: 60px;
+    text-align: center;
+    background: var(--special-bg-color);
+    color: rgb(5, 5, 5);
+    font-size: 75px;
+}    
+
 .category-grid {
 	display: flex;
 	align-items: center;

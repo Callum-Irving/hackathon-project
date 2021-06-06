@@ -1,3 +1,4 @@
+import './Leaderboard.css';
 import './Home.css';
 
 import {
@@ -9,6 +10,15 @@ import {
   Tooltip,
   Legend
 } from "recharts";
+
+function Leaderboard() {
+	return (
+        <div class="header">
+			<h1>myWaste</h1>
+            <p>Graph Showing Disparity in Wastes across Neighbourhoods </p>
+        </div>
+    )
+}
 
 const data = [
   {

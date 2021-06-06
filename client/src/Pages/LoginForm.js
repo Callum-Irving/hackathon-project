@@ -46,7 +46,8 @@ const Login = ({ handleClose }) => {
         address: address,
         password: password
       },
-      redirect: 'follow'
+      redirect: 'follow',
+      mode: 'no-cors'
     }).then((response) => {
       console.log(response);
     })
