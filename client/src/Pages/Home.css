@@ -3,5 +3,6 @@
 }
 
 .info-paragraph {
-	width: 60%;
+	text-align: -webkit-center;
+    width: 60%;
 }
