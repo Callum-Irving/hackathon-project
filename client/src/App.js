@@ -84,9 +84,9 @@ function App() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="pv" stackId="a" fill="#8884d8" />
-        <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
-        <Bar dataKey="sv" stackId="a" fill="#c2e0e3" />
+        <Bar dataKey="Garbage" stackId="a" fill="#8884d8" />
+        <Bar dataKey="Recycling" stackId="a" fill="#82ca9d" />
+        <Bar dataKey="Compost" stackId="a" fill="#c2e0e3" />
       </BarChart>
     </div>
   );
