@@ -7,6 +7,7 @@ function Home() {
 			<p className="info-paragraph"> 
             Our web app is designed in a manner that encourages citizens to be mindful about how much waste they are producing
 			</p>
+			<img> src = "https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg" alt="Home page picture"</img>
             <h2> What is E-waste and why is it such a huge problem?</h2>
 			<p className="info-paragraph"> 
             E-waste stands for electronic waste, which refers to the discarded electrical or electronic devices. E-waste is a huge problem. All of the electronics we discard contain toxic chemicals and when they end up in a landfill, these chemicals leach into the ground. E-waste is much more of a problem today because there's so much new technology being produced. As an example, people are switching out their smartphones quicker than ever before and it’s partly because all the new electronic devices are being ‘designed for the dump’. That means that companies are designing their products in a way that the products are hard to repair and they become obsolete quickly, forcing consumers to buy new devices more often. E-waste will continue to grow as a problem if left unnoticed because Moore’s law states that about every 18 months, the processors designed double in speed. This means that about every 18 months, the E-waste will also increase significantly. 
