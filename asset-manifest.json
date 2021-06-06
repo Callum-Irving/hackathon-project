@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/hackathon-project/static/css/main.13f43c19.chunk.css",
+    "main.js": "/hackathon-project/static/js/main.dadd7568.chunk.js",
+    "main.js.map": "/hackathon-project/static/js/main.dadd7568.chunk.js.map",
+    "runtime-main.js": "/hackathon-project/static/js/runtime-main.188f33f5.js",
+    "runtime-main.js.map": "/hackathon-project/static/js/runtime-main.188f33f5.js.map",
+    "static/js/2.5dc218c1.chunk.js": "/hackathon-project/static/js/2.5dc218c1.chunk.js",
+    "static/js/2.5dc218c1.chunk.js.map": "/hackathon-project/static/js/2.5dc218c1.chunk.js.map",
+    "index.html": "/hackathon-project/index.html",
+    "static/css/main.13f43c19.chunk.css.map": "/hackathon-project/static/css/main.13f43c19.chunk.css.map",
+    "static/js/2.5dc218c1.chunk.js.LICENSE.txt": "/hackathon-project/static/js/2.5dc218c1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.188f33f5.js",
+    "static/js/2.5dc218c1.chunk.js",
+    "static/css/main.13f43c19.chunk.css",
+    "static/js/main.dadd7568.chunk.js"
+  ]
+}
