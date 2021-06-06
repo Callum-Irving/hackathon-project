@@ -2,6 +2,14 @@
 	text-align: -webkit-center;
 }
 
+.myWaste {
+    padding: 60px;
+    text-align: center;
+    background: var(--special-bg-color);
+    color: white;
+    font-size: 30px;
+}
+
 .info-paragraph {
 	width: 60%;
 }
