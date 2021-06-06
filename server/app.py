@@ -4,7 +4,7 @@ import schedule
 import threading
 import base64
 import time
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 from flask import Flask, request, session, redirect
 from flask_cors import CORS
 import psycopg2
@@ -21,7 +21,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Load environment variables from a .env file
 # This is just for testing, not for production
-# load_dotenv()
+load_dotenv()
 
 # Establish connection to CockroachDB database
 conn = psycopg2.connect(
@@ -68,7 +68,7 @@ stop_run_continuously = run_continuously(1)
 ################################ Authentication ################################
 
 base_url = os.environ["CLIENT_URL"]
-success_url = base_url + "data_visualization/"
+success_url = base_url + "#/data_visualization/"
 
 
 @app.route("/auth/create_user", methods=["POST"])
