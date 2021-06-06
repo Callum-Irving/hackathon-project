@@ -14,7 +14,7 @@ function Navbar() {
 				<Link to="/data_visualization">
 					<button className="navlink">View Data</button>
 				</Link>
-				<Link to="/login">
+				<Link to="/LoginForm">
 					<button className="navlink">Login</button>
 				</Link>
 			</ul>
