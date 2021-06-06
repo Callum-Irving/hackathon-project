@@ -19,6 +19,7 @@ function Home() {
             However, us mere civilians are not out of the picture, we can alter our lifestyles slightly to chnage how much plastic ends up in the ocean. It can start from simple things like buying reusable water bottles, taking reusable bags when we go grocery shopping, buying in bulk, just to name a few. The main idea behind all of this is to reduce the amount of plastic we use in the first place. However, as of the current situation, it is almost impossible to live a life without plastic which is where our web app myWaste comes in. myWaste will allow you to monitor how much waste you are producing as a community and will allow you to set goals to reduce your waste production. 
 			</p>
 		</div>
+    )
 }
 
 export default Home;
