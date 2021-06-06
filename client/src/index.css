@@ -4,7 +4,7 @@ body {
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: var(--bg-color);
+	background-color: linear-gradient(180deg, #ADE28A 40.63%, rgba(173, 226, 138, 0.46) 80.73%, rgba(173, 226, 138, 0.22) 100%);
 	color: var(--text-color);
 	font-family: 'Roboto', sans-serif;
 }
