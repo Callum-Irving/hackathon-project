@@ -1,5 +1,33 @@
 import React, { useState } from 'react';
 import './LoginForm.css';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis
+} from "recharts";
+
+const data = [
+  {
+    subject: "Recycle",
+    A: 76,
+    B: 76,
+    fullMark: 150
+  },
+  {
+    subject: "Green Bin",
+    A: 28,
+    B: 130,
+    fullMark: 150
+  },
+  {
+    subject: "Garbage",
+    A: 120,
+    B: 130,
+    fullMark: 150
+  }
+];
 
 const heroku_url = 'https://hacktheearth-project.herokuapp.com/'
 
@@ -49,6 +77,25 @@ const Login = ({ handleClose }) => {
         <button type="submit" variant="contained" color="primary">
           Signup
         </button>
+        <RadarChart
+      cx={300}
+      cy={250}
+      outerRadius={150}
+      width={500}
+      height={500}
+      data={data}
+    >
+      <PolarGrid />
+      <PolarAngleAxis dataKey="subject" />
+      <PolarRadiusAxis />
+      <Radar
+        name="Mike"
+        dataKey="A"
+        stroke="#8884d8"
+        fill="#8884d8"
+        fillOpacity={0.6}
+      />
+    </RadarChart>
       </div>
     </form>
   );
