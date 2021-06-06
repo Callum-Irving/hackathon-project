@@ -54,7 +54,8 @@ const Login = ({ handleClose }) => {
     // TODO: Send fetch API post request
   };
 
-  return (
+  return (<>
+    <h1>Household Waste Produce</h1>
     <form onSubmit={handleSubmit}>
       <input
         label="Address"
@@ -99,7 +100,7 @@ const Login = ({ handleClose }) => {
     </RadarChart>
       </div>
     </form>
-  );
+  </>);
 };
 
 export default Login;
