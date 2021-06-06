@@ -8,6 +8,9 @@ function Navbar() {
 				<h1>Name Goes Here</h1>
 			</Link>
 			<ul className="link-group">
+				<Link to="/Home">
+					<button className="navlink">Home</button>
+				</Link>
 				<Link to="/data_visualization">
 					<button className="navlink">View Data</button>
 				</Link>
