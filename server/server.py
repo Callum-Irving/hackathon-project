@@ -5,7 +5,7 @@ import schedule
 import threading
 import base64
 import time
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from flask import Flask, request, session
 from flask_cors import CORS
 from werkzeug.utils import redirect
@@ -22,7 +22,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Load environment variables from a .env file
 # This is just for testing, not for production
-load_dotenv()
+# load_dotenv()
 
 # Establish connection to CockroachDB database
 conn = psycopg2.connect(
