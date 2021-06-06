@@ -6,7 +6,7 @@ import base64
 import time
 from dotenv import load_dotenv
 from flask import Flask, request, session, redirect
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 import psycopg2
 
 
@@ -14,8 +14,7 @@ import psycopg2
 
 app = Flask(__name__)
 app.secret_key = os.urandom(16)
-CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app, resources=r'/*', supports_credentials=True)
 
 ############################## Connect to Databse ##############################
 
@@ -72,7 +71,6 @@ success_url = base_url + "#/data_visualization/"
 
 
 @app.route("/auth/create_user", methods=["POST"])
-@cross_origin()
 def create_user():
     # Get request data
     data = request.get_json()
@@ -109,7 +107,6 @@ def create_user():
 
 
 @app.route("/auth/login", methods=["POST"])
-@cross_origin()
 def login():
     # Get request data
     # TODO: use request.form
