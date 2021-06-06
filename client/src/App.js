@@ -1,5 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/navbar';
+import Home from './Pages/Home';
+import Leaderboard from './Pages/Leaderboard';
+import { Switch, Route } from 'react-router-dom';
+//import Login from './Pages/LoginForm';
+
 import {
   BarChart,
   Bar,
@@ -57,26 +62,33 @@ const data = [
 
 function App() {
   return (
-    <BarChart
-      width={1400}
-      height={750}
-      data={data}
-      margin={{
-        top: 20,
-        right: 30,
-        left: 20,
-        bottom: 5
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Bar dataKey="pv" stackId="a" fill="#8884d8" />
-      <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
-      <Bar dataKey="sv" stackId="a" fill="#c2e0e3" />
-    </BarChart>
+    <div className="app">
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+				<Route path="/data_visualization" component={Leaderboard} />
+      </Switch>
+      <BarChart
+        width={1400}
+        height={750}
+        data={data}
+        margin={{
+          top: 20,
+          right: 30,
+          left: 20,
+          bottom: 5
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="pv" stackId="a" fill="#8884d8" />
+        <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
+        <Bar dataKey="sv" stackId="a" fill="#c2e0e3" />
+      </BarChart>
+    </div>
   );
 }
 

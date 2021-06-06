@@ -14,6 +14,7 @@ from werkzeug.utils import redirect
 ############################## Connect to Databse ##############################
 
 # Load environment variables from a .env file
+# This is just for testing, not for production
 load_dotenv()
 
 # Establish connection to CockroachDB database
@@ -188,6 +189,3 @@ if __name__ == "__main__":
     app.run()
     stop_run_continuously.set()
     conn.close()
-
-
-### Test test 
