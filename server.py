@@ -6,9 +6,8 @@ import threading
 import base64
 import time
 # from dotenv import load_dotenv
-from flask import Flask, request, session
+from flask import Flask, request, session, redirect
 from flask_cors import CORS
-from werkzeug.utils import redirect
 
 
 #################################### Flask #####################################
