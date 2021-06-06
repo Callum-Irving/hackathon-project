@@ -17,43 +17,43 @@ import {
 
 const data = [
   {
-    name: "Page A",
+    name: "Laurelwood",
     Garbage: 4000,
     Recycling: 2400,
     Compost: 2400
   },
   {
-    name: "Page B",
+    name: "Westvale",
     Garbage: 3000,
     Recycling: 1398,
     Compost: 2210
   },
   {
-    name: "Page C",
+    name: "Beechwood",
     Garbage: 2000,
     Recycling: 9800,
     Compost: 2290
   },
   {
-    name: "Page D",
+    name: "Westmount",
     Garbage: 2780,
     Recycling: 3908,
     Compost: 2000
   },
   {
-    name: "Page E",
+    name: "Vista Hills",
     Garbage: 1890,
     Recycling: 4800,
     Compost: 2181
   },
   {
-    name: "Page F",
+    name: "Lakeshore",
     Garbage: 2390,
     Recycling: 3800,
     Compost: 2500
   },
   {
-    name: "Page G",
+    name: "Eastbridge",
     Garbage: 3490,
     Recycling: 4300,
     Compost: 2100
