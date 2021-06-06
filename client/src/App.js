@@ -1,24 +1,82 @@
 import logo from './logo.svg';
 import './App.css';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend
+} from "recharts";
+
+const data = [
+  {
+    name: "Page A",
+    uv: 4000,
+    pv: 2400,
+    sv: 2400
+  },
+  {
+    name: "Page B",
+    uv: 3000,
+    pv: 1398,
+    sv: 2210
+  },
+  {
+    name: "Page C",
+    uv: 2000,
+    pv: 9800,
+    sv: 2290
+  },
+  {
+    name: "Page D",
+    uv: 2780,
+    pv: 3908,
+    sv: 2000
+  },
+  {
+    name: "Page E",
+    uv: 1890,
+    pv: 4800,
+    sv: 2181
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    sv: 2500
+  },
+  {
+    name: "Page G",
+    uv: 3490,
+    pv: 4300,
+    sv: 2100
+  }
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BarChart
+      width={1400}
+      height={750}
+      data={data}
+      margin={{
+        top: 20,
+        right: 30,
+        left: 20,
+        bottom: 5
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Bar dataKey="pv" stackId="a" fill="#8884d8" />
+      <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
+      <Bar dataKey="sv" stackId="a" fill="#c2e0e3" />
+    </BarChart>
   );
 }
 
