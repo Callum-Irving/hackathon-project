@@ -8,13 +8,10 @@ function Navbar() {
 				<h1>myWaste</h1>
 			</Link>
 			<ul className="link-group">
-				<Link to="/Home">
-					<button className="navlink">Home</button>
-				</Link>
 				<Link to="/data_visualization">
 					<button className="navlink">View Data</button>
 				</Link>
-				<Link to="/LoginForm">
+				<Link to="/login">
 					<button className="navlink">Login</button>
 				</Link>
 			</ul>

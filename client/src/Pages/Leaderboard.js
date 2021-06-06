@@ -1,10 +1,4 @@
 import './Home.css';
-import './App.css';
-import Navbar from './components/navbar';
-import Home from './Pages/Home';
-import Leaderboard from './Pages/Leaderboard';
-import { Switch, Route } from 'react-router-dom';
-//import Login from './Pages/LoginForm';
 
 import {
   BarChart,
@@ -64,11 +58,6 @@ const data = [
 function Home() {
 	return (
 		<div className="app">
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-				<Route path="/data_visualization" component={Leaderboard} />
-      </Switch>
       <BarChart
         width={1400}
         height={750}
