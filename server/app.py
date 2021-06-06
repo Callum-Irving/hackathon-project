@@ -14,8 +14,7 @@ import psycopg2
 
 app = Flask(__name__)
 app.secret_key = os.urandom(16)
-CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app, resources=r'/*', supports_credentials=True)
 
 ############################## Connect to Databse ##############################
 
