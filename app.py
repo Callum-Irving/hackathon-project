@@ -6,7 +6,7 @@ import base64
 import time
 from dotenv import load_dotenv
 from flask import Flask, request, session, redirect
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import psycopg2
 
 
@@ -72,6 +72,7 @@ success_url = base_url + "#/data_visualization/"
 
 
 @app.route("/auth/create_user", methods=["POST"])
+@cross_origin()
 def create_user():
     # Get request data
     data = request.get_json()
@@ -108,6 +109,7 @@ def create_user():
 
 
 @app.route("/auth/login", methods=["POST"])
+@cross_origin()
 def login():
     # Get request data
     # TODO: use request.form
