@@ -6,8 +6,9 @@ import threading
 import base64
 import time
 from dotenv import load_dotenv
-from flask import Flask, request
+from flask import Flask, request, session
 from flask_cors import CORS
+from werkzeug.utils import redirect
 
 
 ############################## Connect to Databse ##############################
@@ -60,10 +61,13 @@ stop_run_continuously = run_continuously(1)
 #################################### Flask #####################################
 
 app = Flask(__name__)
+app.secret_key = os.urandom(16)
 CORS(app)
 
 ################################ Authentication ################################
 
+base_url = os.environ["CLIENT_URL"]
+success_url = base_url + "data_visualization/"
 
 @app.route("/auth/create_user", methods=["POST"])
 def create_user():
@@ -102,8 +106,9 @@ def create_user():
 
 
 @app.route("/auth/login", methods=["POST"])
-def authenticate_user():
+def login():
     # Get request data
+    # TODO: use request.form
     data = request.get_json()
     address = data["address"]
     password = data["password"]
@@ -116,19 +121,16 @@ def authenticate_user():
         )
         conn.commit()
 
-        # Fin the user with the given address
+        # Find the user with the given address
         cur.execute(
-            "SELECT (salt, password) FROM hacktheearth.users WHERE address = %s", (address,))
+            "SELECT * FROM hacktheearth.users WHERE address = %s", (address,))
 
         # Decode response
-        user_row = cur.fetchall()[0][0][1:-1]
-        user_row = tuple(map(str, user_row.split(',')))
-        salt = user_row[0]
-        old_hash = user_row[1]
+        (stored_address, salt, old_hash) = cur.fetchall()[0]
 
         # If we don't get a response, it means that there is no user with that
         # address yet.
-        if not user_row:
+        if not stored_address:
             return "This address does not have an account associated with it yet", 400
 
     # Hash the password that the person trying to login provided
@@ -137,10 +139,19 @@ def authenticate_user():
 
     # Compare the hashes to see if they gave the correct password or not
     if new_hash == old_hash:
-        return "Login successfull"
+        # Store session cookie then redirect to success url
+        session["username"] = stored_address
+        return redirect(success_url)
     else:
         return "Incorrect password", 400
 
+
+@app.route("/auth/logout", methods=["POST"])
+def logout():
+    # Remove session cookie then go to home page
+    # TODO: Confirm this works
+    session.pop("username", None)
+    return redirect(base_url)
 
 ########################### Data Querying and Updating #########################
 
@@ -163,6 +174,10 @@ def add_entry():
 
 @app.route("/api/get_general_data", methods=["GET"])
 def get_general_data():
+
+    # TODO: If "username" in session:
+
+    # Get data from database
     with conn.cursor() as cur:
         cur.execute("SELECT * FROM hacktheearth.logs ORDER BY id DESC")
         posts = cur.fetchall()
