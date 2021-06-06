@@ -56,6 +56,7 @@ const data = [
 ];
 
 function Home() {
+    <h1>myWaste</h1>
 	return (
 		<div className="app">
       <BarChart
