@@ -11,7 +11,7 @@ import {
   Legend
 } from "recharts";
 
-function Leaderboard() {
+function myWaste() {
 	return (
         <div class="header">
 			<h1>myWaste</h1>
