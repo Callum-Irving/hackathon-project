@@ -18,45 +18,45 @@ import {
 const data = [
   {
     name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    sv: 2400
+    Garbage: 4000,
+    Recycling: 2400,
+    Compost: 2400
   },
   {
     name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    sv: 2210
+    Garbage: 3000,
+    Recycling: 1398,
+    Compost: 2210
   },
   {
     name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    sv: 2290
+    Garbage: 2000,
+    Recycling: 9800,
+    Compost: 2290
   },
   {
     name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    sv: 2000
+    Garbage: 2780,
+    Recycling: 3908,
+    Compost: 2000
   },
   {
     name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    sv: 2181
+    Garbage: 1890,
+    Recycling: 4800,
+    Compost: 2181
   },
   {
     name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    sv: 2500
+    Garbage: 2390,
+    Recycling: 3800,
+    Compost: 2500
   },
   {
     name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    sv: 2100
+    Garbage: 3490,
+    Recycling: 4300,
+    Compost: 2100
   }
 ];
 
