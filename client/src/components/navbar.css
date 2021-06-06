@@ -15,7 +15,7 @@
 }
 
 .home-link {
-	color: var(--text-color);
+	color: #FFFFFF;
 	text-decoration: none;
 }
 
@@ -35,7 +35,7 @@
 	text-align: center;
 	background-color: var(--subtle-color);
 	border-style: none;
-	color: var(--text-color);
+	color: #FFFFFF;
 	font-family: Roboto;
 	font-weight: 500;
 	transition: 0.3s;
