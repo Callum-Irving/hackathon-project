@@ -1,13 +1,5 @@
 import './Home.css';
 
-function LeaderBoard() {
-	return (
-        <div class="header">
-			<h1>myWaste</h1>
-        </div>
-    )
-}
-
 import {
   BarChart,
   Bar,
@@ -17,6 +9,14 @@ import {
   Tooltip,
   Legend
 } from "recharts";
+
+function LeaderBoard() {
+	return (
+        <div class="header">
+			<h1>myWaste</h1>
+        </div>
+    )
+}
 
 const data = [
   {
