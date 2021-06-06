@@ -3,7 +3,7 @@ import Navbar from './components/navbar';
 import Home from './Pages/Home';
 import Leaderboard from './Pages/Leaderboard';
 import { Switch, Route } from 'react-router-dom';
-//import Login from './Pages/LoginForm';
+import Login from './Pages/LoginForm';
 
 import {
   BarChart,
@@ -67,6 +67,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
 				<Route path="/data_visualization" component={Leaderboard} />
+				<Route path="/login" component={Login} />
       </Switch>
       <BarChart
         width={1400}
