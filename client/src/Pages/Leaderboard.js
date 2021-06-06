@@ -1,3 +1,4 @@
+import './Leaderboard.css';
 import './Home.css';
 
 import {
@@ -14,7 +15,7 @@ function Leaderboard() {
 	return (
         <div class="header">
 			<h1>myWaste</h1>
-            <p>Graph Showing Disparity in Wastes across Neighbourhoods  </p>
+            <p>Graph Showing Disparity in Wastes across Neighbourhoods </p>
         </div>
     )
 }
