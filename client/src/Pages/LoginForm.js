@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './LoginForm.css';
 
+const heroku_url = 'https://hacktheearth-project.herokuapp.com/'
+
 const Login = ({ handleClose }) => {
   // create state variables for each input
   const [address, setAddress] = useState('');
@@ -9,6 +11,17 @@ const Login = ({ handleClose }) => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(address, password);
+    fetch(heroku_url, {
+      method: 'POST',
+      credentials: 'include',
+      body: {
+        address: address,
+        password: password
+      },
+      redirect: 'follow'
+    }).then((response) => {
+      console.log(response);
+    })
     // TODO: Send fetch API post request
   };
 
