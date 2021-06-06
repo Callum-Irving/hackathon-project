@@ -10,7 +10,7 @@ import {
   Legend
 } from "recharts";
 
-function LeaderBoard() {
+function Home() {
 	return (
         <div class="header">
 			<h1>myWaste</h1>
