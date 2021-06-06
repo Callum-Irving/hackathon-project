@@ -11,6 +11,13 @@ from flask_cors import CORS
 from werkzeug.utils import redirect
 
 
+#################################### Flask #####################################
+
+app = Flask(__name__)
+app.secret_key = os.urandom(16)
+CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 ############################## Connect to Databse ##############################
 
 # Load environment variables from a .env file
@@ -59,16 +66,11 @@ schedule.every().sunday.at("23:59").do(wipe_database)
 # Start the background thread
 stop_run_continuously = run_continuously(1)
 
-#################################### Flask #####################################
-
-app = Flask(__name__)
-app.secret_key = os.urandom(16)
-CORS(app)
-
 ################################ Authentication ################################
 
 base_url = os.environ["CLIENT_URL"]
 success_url = base_url + "data_visualization/"
+
 
 @app.route("/auth/create_user", methods=["POST"])
 def create_user():
