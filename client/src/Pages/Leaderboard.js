@@ -1,5 +1,13 @@
 import './Home.css';
 
+function LeaderBoard() {
+	return (
+        <div class="header">
+			<h1>myWaste</h1>
+        </div>
+    )
+}
+
 import {
   BarChart,
   Bar,
@@ -56,7 +64,6 @@ const data = [
 ];
 
 function Home() {
-    <h1>myWaste</h1>
 	return (
 		<div className="app">
       <BarChart
