@@ -3,9 +3,9 @@ import './Home.css';
 function Home() {
 	return (
 		<div className="content home">
-			<h1>Graph Detailing Information?</h1>
+			<h1>Leaderboard?</h1>
 			<p className="info-paragraph">
-				This website is amazing
+				The Neighbourhoods and The Average Wastes Collected
 			</p>
 		</div>
 	);

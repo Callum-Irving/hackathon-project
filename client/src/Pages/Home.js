@@ -5,7 +5,7 @@ function Home() {
 		<div className="content home">
 			<h1>What is our project?</h1>
 			<p className="info-paragraph">
-				This website is amazing
+            Our web app is designed in a manner that encourages citizens to be mindful about how much waste they are producing
 			</p>
 		</div>
 	);
