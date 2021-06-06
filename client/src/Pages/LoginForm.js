@@ -35,6 +35,7 @@ const Login = ({ handleClose }) => {
   // create state variables for each input
   const [address, setAddress] = useState('');
   const [password, setPassword] = useState('');
+  const [showGraph, setGraph] = useState('')
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -51,6 +52,7 @@ const Login = ({ handleClose }) => {
     }).then((response) => {
       console.log(response);
     })
+    setGraph(true)
     // TODO: Send fetch API post request
   };
 
@@ -64,22 +66,12 @@ const Login = ({ handleClose }) => {
         value={address}
         onChange={e => setAddress(e.target.value)}
       />
-      <input
-        label="Password"
-        variant="filled"
-        type="password"
-        required
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
-      <div>
-        <button variant="contained" onClick={handleClose}>
-          Cancel
-        </button>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <button type="submit" variant="contained" color="primary">
-          Signup
+          Get Data
         </button>
         <RadarChart
+          className={ showGraph ? "show" : "noshow" }
       cx={300}
       cy={250}
       outerRadius={150}
